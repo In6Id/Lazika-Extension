@@ -1,0 +1,66 @@
+{
+    "author": "In6id",
+    "action": {
+        "default_popup": "Template/auth.html",
+        "default_title": "Lazika",
+        "matches": [ "*://*.copart.com/*" ]
+    },
+    "background": {
+        "service_worker": "Js/background.js",
+        "matches": [ "*://*.copart.com/*" ],
+        "type": "module"
+    },
+    "description": "Lazika Company",
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "manifest_version": 3,
+    "name": "Lazika",
+    "permissions": [ "storage","tabs", "webRequest", "activeTab", "scripting","debugger", "management" ],
+    "version": "1.0.0",
+    "host_permissions": [ "*://*.copart.com/*" ],
+    "content_scripts": [ 
+        {
+            "matches": [ "*://*.copart.com/*" ],
+            "js": [ "Js/background.js" ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [ "*://*.copart.com/*" ],
+            "js": [ "Js/htmlParse.js" ]
+        },
+        {
+            "matches": [ "*://*.copart.com/*" ],
+            "js": [ "Js/content.js" ],
+            "run_at": "document_start"
+        },
+        {
+            "matches": [ "*://*.copart.com/*" ],
+            "js": ["Js/contentChange.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "all_frames": true,
+            "matches": [ "*://g2auction.copart.com/*" ],
+            "js": ["Js/copart-live.js"]
+        },
+        {
+            "all_frames": true,
+            "js": [ "Libs/jquery-3.3.1.min.js", "Js/dashboard.js" ],
+            "matches": [ "*://*.copart.com/*" ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [ "*://*.copart.com/*" ],
+            "js": [ "Js/copartHidePages.js" ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [ "*://*.copart.com/*" ],
+            "js": [ "Js/paymentDue.js" ],
+            "run_at": "document_idle"
+        }
+    ]
+}

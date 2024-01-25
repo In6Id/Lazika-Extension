@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../AppData/Local/Google/Chrome/User Data/Default/Extensions/ehpiejnmbdjkaplmbafaejdhodalfbie/0.9.9_0"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "chrome-extension"
+	}
+}
