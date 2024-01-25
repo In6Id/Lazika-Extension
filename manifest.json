@@ -18,7 +18,7 @@
     },
     "manifest_version": 3,
     "name": "Lazika",
-    "permissions": [ "storage","tabs", "webRequest", "activeTab", "scripting","debugger", "management" ],
+    "permissions": [ "storage","tabs", "activeTab", "scripting" ],
     "version": "1.0.0",
     "host_permissions": [ "*://*.copart.com/*" ],
     "content_scripts": [ 
