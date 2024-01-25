@@ -10,18 +10,6 @@ class Background {
 
       console.log("background.js loaded")
 
-      // const ws = new WebSocket(`ws://localhost:8999`);
-
-      //   ws.onopen = () => {
-      //       ws.send(JSON.stringify({
-      //           type: 'auth',
-      //           data: {
-      //               username: 'lazika',
-      //               password: 'lazika'
-      //           }
-      //       }))
-      //   }
-
       this.setPopUpPage()
 
   }
@@ -67,10 +55,6 @@ class Background {
             if(message.credentialsData) {
               chrome.storage.local.set({credentialsData: message.credentialsData})
             }
-
-            // if(message.newRoute){
-            //   this.listenNewRoute(message.newRoute)
-            // }
 
             if (message.fetchVehicles) {
               // Handle the logic to fetch vehicles and manipulate the DOM
@@ -226,15 +210,6 @@ class Background {
       });
 
   }
-
-  // getLocalStorage(key) {
-
-  //     return chrome.storage.local.get(key, function(result) {
-  //         return result
-  //     })
-
-  // }
-  
 
   listenNewRoute(route){
 		if (route.includes('/myBids/') || route.includes('/lotsLost/') || route.includes('/lotsWon/')) {

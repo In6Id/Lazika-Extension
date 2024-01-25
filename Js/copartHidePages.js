@@ -1,14 +1,7 @@
 "use strict";
 (async () => {
     const e = await a();
-    console.log(e);
-    // if (!e.authStatus) return;
-    // if (!e.auction?.COPART?.login) return;
-    // const t = async () =>
-    //     new Promise((e) => {
-    //         chrome.runtime.sendMessage({ get: "checkControlPrebid" }, (t) => e(t));
-    //     });
-    // if (!(await t())) return;
+    
     const n = "/notfound-error";
     const o = { all: ["accountinformation", "dashboard", 'member-payments', "accountsetting", "messagesettings", "preferred-locations", "deposit", "payment-history", "funds", "lotswon", "lotslost", "mylots"], bids: ["mybids"], payments: ["member-payments"] };
     const r = ["myoffers"];
