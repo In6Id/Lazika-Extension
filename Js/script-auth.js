@@ -9,14 +9,16 @@ copartUrl.addEventListener('click', (e) => {
     })
 })
 
-let logout = document.getElementById('logout');
+let logout = document.getElementById('logoutExt');
 
 logout.addEventListener('click', (e) => {
     e.preventDefault();
-
+    // console.log(logout, e)
+    // window.href = 'https://www.copart.com/doLogout.html'
     chrome.runtime.sendMessage({logout: true})
     location.href = './auth.html';
     window.localStorage.setItem('isAuth', false);
+    
 })
 
 let credentials = JSON.parse(window.localStorage.getItem('credentials'));

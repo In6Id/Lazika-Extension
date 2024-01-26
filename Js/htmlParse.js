@@ -24,6 +24,6 @@ if(document.getElementById('headerloggedInUserDropdown').querySelector('.d-f-c')
 let footer = document.getElementById('footer-container')
 footer.remove()
 
-let headerloggedInUserDropdown = document.getElementById('headerloggedInUserDropdown')
+// let headerloggedInUserDropdown = document.getElementById('headerloggedInUserDropdown')
 // headerloggedInUserDropdown.style.display = 'none'
 

@@ -167,23 +167,24 @@ class Background {
   logoutFromCopart() {
 
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const tabId = tabs[0]?.id;
 
-        chrome.scripting.executeScript({
-            target: { tabId: tabs[0]?.id },
+        if (tabId !== undefined) {
+          chrome.scripting.executeScript({
+            target: { tabId: tabId },
             function: () => {
-
-              let logout = document.getElementById('headerloggedInUserDropdown')
-              let logoutButton = logout.querySelector('.d-f-c')
-              let logoutButtonChildren = logoutButton.children
-
-              logoutButtonChildren[0].click()
-
-              window.href = 'https://www.copart.com/doLogout.html'
-              
+              let logout = document.getElementById('headerloggedInUserDropdown');
+              let logoutButton = logout.querySelector('.d-f-c');
+              let logoutButtonChildren = logoutButton.children;
+    
+              logoutButtonChildren[0].click();
+    
+              window.location.href = 'https://www.copart.com/doLogout.html';
             },
-
-        });
-
+          });
+        } else {
+          chrome.tabs.create({ url: 'https://www.copart.com/doLogout.html' });
+        }
       });
 
   }
@@ -191,8 +192,8 @@ class Background {
   setPopUpPage() {
 
       chrome.storage.local.get('is_auth', (result) => {
-        console.log(result)
-          if(result.is_auth == 'true') {
+        
+          if(result?.is_auth == 'true') {
               chrome?.action?.setPopup({popup: 'Template/userPage.html'})
           } else {
               chrome?.action?.setPopup({popup: 'Template/auth.html'})
