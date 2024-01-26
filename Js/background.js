@@ -191,7 +191,7 @@ class Background {
   setPopUpPage() {
 
       chrome.storage.local.get('is_auth', (result) => {
-
+        console.log(result)
           if(result.is_auth == 'true') {
               chrome?.action?.setPopup({popup: 'Template/userPage.html'})
           } else {

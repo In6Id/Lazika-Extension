@@ -35,7 +35,7 @@ const loginAuth = async (e) => {
                 chrome.runtime.sendMessage({token: token})
                 chrome.runtime.sendMessage({credentials: JSON.stringify(response.data)})
 
-                window.localStorage.setItem('amexIsAuth', true);
+                window.localStorage.setItem('lazikaIsAuth', true);
                 window.localStorage.setItem('token', token);
                 window.localStorage.setItem('credentials', JSON.stringify(response.data.user));
 

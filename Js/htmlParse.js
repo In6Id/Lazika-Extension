@@ -25,5 +25,5 @@ let footer = document.getElementById('footer-container')
 footer.remove()
 
 let headerloggedInUserDropdown = document.getElementById('headerloggedInUserDropdown')
-headerloggedInUserDropdown.style.display = 'none'
+// headerloggedInUserDropdown.style.display = 'none'
 

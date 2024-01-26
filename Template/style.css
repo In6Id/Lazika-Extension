@@ -19,22 +19,15 @@ body {
     align-items: center;
 }
 
-header {
-    
-}
-
 .header > img {
-    width: 180px;
-}
-
-.inputs {
-    
+    width: 100px;
+    height: auto;
 }
 
 .inputs > input {
-    padding: 7px 10px;
+    padding: 10px 10px;
     border: 1px solid #0f172a1a;
-    border-radius: 4px;
+    border-radius: 20px;
     width: 100%;
     max-width: -webkit-fill-available;
     background-color: #fff;
@@ -48,14 +41,13 @@ input:focus {
 label {
     margin-left: 5px;
     font-weight: bold;
-    
 }
 
 button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 10px;
     width: 100px;
+    border: none;
+    border-radius: 20px;
     max-width: -webkit-fill-available;
     background: #dc2626;
     color: #fff;
@@ -68,6 +60,7 @@ button:hover {
 #logout {
     margin-top: 20px;
     background: #f44336;
+    padding: 10px 20px;
 }
 
 .welcome {
