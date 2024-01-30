@@ -1,52 +1,81 @@
 "use strict";
+
 (async () => {
-    const e = await a();
+    // Authenticate and get result
+    const isAuthenticated = await checkAuthentication();
     
-    const n = "/notfound-error";
-    const o = { all: ["accountinformation", "dashboard", 'member-payments', "accountsetting", "messagesettings", "preferred-locations", "deposit", "payment-history", "funds", "lotswon", "lotslost", "mylots"], bids: ["mybids"], payments: ["member-payments"] };
-    const r = ["myoffers"];
-    i();
-    l();
-    function s({ href: e, collect: t }) {
-        let n = false;
-        for (const o in t) {
-            if (!e.includes(t[o])) continue;
-            n = true;
-            break;
+    // Define constants
+    const notFoundErrorPage = "/notfound-error";
+    const pageCollections = {
+        all: ['member-payments', "accountsetting", "messagesettings", "preferred-locations", "deposit", "payment-history", "funds", "lotswon", "lotslost", "mylots"],
+        bids: ["mybids"],
+        payments: ["member-payments"]
+    };
+    const excludePages = ["myoffers"];
+
+    // Set up intervals for checking and handling elements
+    checkAndRemoveElements();
+    redirectIfUnauthorized();
+
+    // Helper function to check if a page should be collected
+    function shouldCollect({ href, collect }) {
+        let shouldCollect = false;
+        for (const key in collect) {
+            if (href.includes(collect[key])) {
+                shouldCollect = true;
+                break;
+            }
         }
-        return n;
+        return shouldCollect;
     }
-    function c(t) {
-        let n = false;
-        if ("hide" === 'partly_show') n = s({ href: t, collect: o.all }) || s({ href: t, collect: o.payments });
-        else if ("partly_show" === 'partly_show') n = s({ href: t, collect: o.all });
-        // if (!n && "show" !== e.lots_event_setting) n = s({ href: t, collect: o.bids });
-        return n;
+
+    // Helper function to check if an element should be excluded
+    function shouldExclude(href) {
+        let shouldExclude = false;
+        if ("hide" === 'partly_show') {
+            shouldExclude = shouldCollect({ href, collect: pageCollections.all }) || shouldCollect({ href, collect: pageCollections.payments });
+        } else if ("partly_show" === 'partly_show') {
+            shouldExclude = shouldCollect({ href, collect: pageCollections.all });
+        }
+        // Uncomment the following block if needed
+        // if (!shouldExclude && "show" !== 'asd') {
+        //     shouldExclude = shouldCollect({ href, collect: pageCollections.bids });
+        // }
+        return shouldExclude;
     }
-    function i() {
+
+    // Function to periodically check and remove elements
+    function checkAndRemoveElements() {
         setInterval(() => {
-            document.querySelectorAll("a").forEach((e) => {
-                const t = e.href.toLowerCase();
-                if (!c(t)) return;
-                if (s({ href: t, collect: r })) return;
-                const n = e.parentNode;
-                if ("SPAN" === n.nodeName) n.remove();
-                else e.remove();
+            document.querySelectorAll("a").forEach((element) => {
+                const href = element.href.toLowerCase();
+                if(element.getAttribute("data-uname") === "homePageDashboardTab") element.remove();
+                
+                if (!shouldExclude(href)) return;
+                if (shouldCollect({ href, collect: excludePages })) return;
+                const parent = element.parentNode;
+                if ("SPAN" === parent.nodeName) parent.remove();
+                else element.remove();
             });
         }, 500);
     }
-    function l() {
+
+    // Function to periodically check and redirect if unauthorized
+    function redirectIfUnauthorized() {
         setInterval(() => {
-            const e = window.location.href.toLowerCase();
-            if (!c(e)) return;
-            if (s({ href: e, collect: r })) return;
-            window.location.href = n;
+            const currentHref = window.location.href.toLowerCase();
+            if(currentHref.includes('dashboard') && !currentHref.includes('auction')) window.location.href = notFoundErrorPage;
+            if (!shouldExclude(currentHref)) return;
+            if (shouldCollect({ href: currentHref, collect: excludePages })) return;
+            window.location.href = notFoundErrorPage;
         }, 500);
     }
-    async function a() {
-        return new Promise((e) => {
-            chrome.runtime.sendMessage({ get: "authCheck" }, (t) => {
-                e(t);
+
+    // Async function to check authentication using a Promise
+    async function checkAuthentication() {
+        return new Promise((resolve) => {
+            chrome.runtime.sendMessage({ get: "authCheck" }, (result) => {
+                resolve(result);
             });
         });
     }
