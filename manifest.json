@@ -3,11 +3,11 @@
     "action": {
         "default_popup": "Template/auth.html",
         "default_title": "Lazika",
-        "matches": [ "*://*.copart.com/*" ]
+        "matches": [ "*://*.copart.com/*", "*://g2auction.copart.com/*", "*://*.iaai.com/*"]
     },
     "background": {
         "service_worker": "Js/background.js",
-        "matches": [ "*://*.copart.com/*" ],
+        "matches": [ "*://*.copart.com/*", "*://g2auction.copart.com/*", "*://*.iaai.com/*"],
         "type": "module"
     },
     "description": "Lazika Company",
@@ -18,12 +18,12 @@
     },
     "manifest_version": 3,
     "name": "Lazika",
-    "permissions": [ "storage","tabs", "activeTab", "scripting" ],
+    "permissions": [ "storage","tabs", "activeTab", "scripting", "webRequest" ],
     "version": "1.0.0",
-    "host_permissions": [ "*://*.copart.com/*" ],
+    "host_permissions": [ "*://*.copart.com/*", "*://g2auction.copart.com/*", "*://*.iaai.com/*"],
     "content_scripts": [ 
         {
-            "matches": [ "*://*.copart.com/*" ],
+            "matches": [ "*://*.copart.com/*", "*://g2auction.copart.com/*"],
             "js": [ "Js/background.js" ],
             "run_at": "document_end"
         },
@@ -61,6 +61,21 @@
             "matches": [ "*://*.copart.com/*" ],
             "js": [ "Js/paymentDue.js" ],
             "run_at": "document_idle"
+        },
+        {
+            "js": [ "Js/iaaiLogIn.js" ],
+            "matches": [ "*://login.iaai.com/*" ],
+            "run_at": "document_end"
+        },
+        {
+            "all_frames": true,
+            "js": [ "Js/iaai_live.js" ],
+            "matches": [ "*://portal.auctionnow.iaai.com/*" ]
+        },
+        {
+            "all_frames": true,
+            "js": [ "Js/iaaiPrebid.js", "Js/iaaiHidePages.js" ],
+            "matches": [ "*://*.iaai.com/*" ]
         }
     ]
 }

@@ -43,7 +43,17 @@ label {
     font-weight: bold;
 }
 
-button {
+ .logout button {
+    padding: 10px 10px;
+    width: 100px;
+    border: none;
+    border-radius: 20px;
+    max-width: -webkit-fill-available;
+    background: #dc2626;
+    color: #fff;
+}
+
+.container button {
     padding: 10px 10px;
     width: 100px;
     border: none;
@@ -136,4 +146,105 @@ button:hover {
     --padding-primary: 16px;
     --padding-secondary: calc(var(--padding-primary) / 2);
     --primary-outline: var(--border-color-outline) dotted 1px;
+}
+
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: -webkit-fill-available;
+}
+
+.select-wrapper select {
+    width: 100%;
+    padding: 10px 10px;
+    border: 1px solid #0f172a1a;
+    border-radius: 20px;
+    background-color: #fff;
+    color: rgb(71, 77, 102);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    text-align: center;
+    cursor: pointer;
+}
+
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #000;
+}
+
+.select-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #fff;
+    z-index: 1;
+}
+
+.reload {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.reload-button {
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    border-radius: 50%; /* Circular shape */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+#reloadIcon {
+    width: 20px; /* Width of the reload icon */
+    height: 20px; /* Height of the reload icon */
+    fill: #fff; /* White fill color for the icon */
+}
+
+.custom-select {
+    position: relative;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #d2b5b5;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+}
+
+
+.custom-select option.iaai-select-option {
+    font-size: 16px;
+    background: linear-gradient(rgba(159, 4, 4, 0.543), rgba(210, 3, 3, 0.5));
+}
+
+.custom-select option.copart-select-option {
+    font-size: 16px;
+    background: linear-gradient(rgba(0, 30, 127, 0.63), rgba(0, 77, 141, 0.5));
+}
+
+.custom-select option {
+    background-color: transparent;
 }
