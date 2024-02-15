@@ -9,14 +9,19 @@ class LotManager {
     this.observer.observe(document.body, this.config);
   }
 
-  init() {
+  async init() {
 
-    chrome.storage.local.get('credentialsData', (result) => {
-      let credentials = JSON.parse(result.credentialsData);
+    let credentials = await this.promise({ get: 'getUserConfig' });
+    let auth = await this.promise({ get: 'getAppInfo' });
+    credentials = JSON.parse(credentials);
+    auth = JSON.parse(auth);
+
+      if (auth?.authStatus) {
+
       document.querySelectorAll('.ml-5.loggedInUserIcon')[0].innerText = `${credentials.name} ${credentials.surname}`
 
-
-
+      let avatar = document.querySelectorAll('.user-icon')[0]
+      avatar.setAttribute('src', credentials.avatar)
 
       let nav = document.querySelectorAll('.nav.navbar-nav')
       
@@ -34,8 +39,16 @@ class LotManager {
 
       console.log('done')
 
-    })
+    }
 
+  }
+
+  async promise(e) {
+    return new Promise((t) => {
+        chrome.runtime.sendMessage(e, (e) => {
+            t(e);
+        });
+    });
   }
 
   onRouteChange(mutationsList) {

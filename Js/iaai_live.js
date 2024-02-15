@@ -1,5 +1,6 @@
 "use strict";
 (async () => {
+    console.log("IAAI Live");
     const e = {
         parentBlock: { selector: "#auctionEvents #Host", id: "Host" },
         auctionItem: { selector: ".AuctionContainer", class: "AuctionContainer" },
