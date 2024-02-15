@@ -25,7 +25,7 @@ void 0;
     }
     function s(t) {
         let n = o({ pathName: t, collect: r.all });
-        if (!n && "hide" === 'ss') n = o({ pathName: t, collect: r.hide });
+        if (!n && "hide" === 'hide') n = o({ pathName: t, collect: r.hide });
         return n;
     }
     function c() {

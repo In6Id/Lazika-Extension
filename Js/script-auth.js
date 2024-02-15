@@ -51,7 +51,7 @@ try {
         let appInfo = JSON.parse(await i({ get: 'getAppInfo' }))
         let userConfig = JSON.parse(await i({ get: 'getUserConfig' }))
     
-        // console.log(userConfig);
+        console.log(userConfig);
     
         if( userConfig && appInfo) {
 
@@ -59,7 +59,7 @@ try {
             let lazikaId = document.getElementById('lazikaId');
     
             user.textContent = `${userConfig.name} ${userConfig.surname}`;
-            lazikaId.textContent = userConfig.id;
+            lazikaId.textContent = userConfig.passcode;
 
             let accountTypeSelect = document.getElementById('accountType');
 
