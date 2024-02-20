@@ -631,7 +631,9 @@ try {
       async function sendBidLog(logData) {
 
         const ipInfo = await getIPInfo()
-        const token = await getToken()
+        let token = await getAppInfo()
+        token = JSON.parse(token).token
+        
         const userInfo = {...logData, ...ipInfo, ...{token: token}}
 
         fetch(`https://api.lazikaautoimport.com/api/v1/dealers/copart-log`, {
