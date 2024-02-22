@@ -18,7 +18,7 @@
     },
     "manifest_version": 3,
     "name": "Lazika",
-    "permissions": [ "storage","tabs", "activeTab", "scripting", "webRequest" ],
+    "permissions": [ "storage","tabs", "activeTab", "scripting"],
     "version": "1.0.0",
     "host_permissions": [ "*://*.copart.com/*", "*://g2auction.copart.com/*", "*://*.iaai.com/*"],
     "content_scripts": [ 
@@ -74,7 +74,7 @@
         },
         {
             "all_frames": true,
-            "js": [ "Js/iaaiPrebid.js", "Js/iaaiHidePages.js" ],
+            "js": [ "Js/iaaiHidePages.js" ],
             "matches": [ "*://*.iaai.com/*" ]
         }
     ]

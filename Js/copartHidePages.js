@@ -2,7 +2,6 @@
 
 (async () => {
     // Authenticate and get result
-    const isAuthenticated = await checkAuthentication();
     
     // Define constants
     const notFoundErrorPage = "/notfound-error";
