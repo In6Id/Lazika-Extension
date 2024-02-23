@@ -19,7 +19,7 @@
     "manifest_version": 3,
     "name": "Lazika",
     "permissions": [ "storage","tabs", "activeTab", "scripting"],
-    "version": "1.0.0",
+    "version": "1.0.4",
     "host_permissions": [ "*://*.copart.com/*", "*://g2auction.copart.com/*", "*://*.iaai.com/*"],
     "content_scripts": [ 
         {
