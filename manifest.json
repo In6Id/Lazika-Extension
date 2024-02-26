@@ -76,6 +76,11 @@
             "all_frames": true,
             "js": [ "Js/iaaiHidePages.js" ],
             "matches": [ "*://*.iaai.com/*" ]
+        },
+        {
+            "js": [ "Js/overRideUserNames.js" ],
+            "matches": [ "*://*.copart.com/*", "*://*.iaai.com/*" ],
+            "run_at": "document_start"
         }
     ]
 }
