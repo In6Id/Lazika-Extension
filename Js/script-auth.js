@@ -53,7 +53,7 @@ try {
     
         console.log(userConfig);
     
-        if( userConfig && appInfo) {
+        if( userConfig && appInfo ) {
 
             let user = document.getElementById('user');
             let lazikaId = document.getElementById('lazikaId');

@@ -95,7 +95,6 @@ try {
               })
             }
             if(message.get === 'setUserConfig') {}
-            if(message.get === 'sendLogBid') {}
             if(message.get === 'sendLogPaymentDue') {}
             if(message.get === 'check_auth') {}
             if(message.get === 'reInitPageLog') {}
