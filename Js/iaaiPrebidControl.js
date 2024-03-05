@@ -2,11 +2,11 @@
 (async () => {
     const t = "switch";
     const e = "exit";
-    let n = async () =>
-        new Promise((t) => {
+    let n = async () =>{
+        return new Promise((t) => {
             chrome.runtime.sendMessage({ get: "getAppInfo" }, (e) => t(e));
         });
-    n = JSON.parse(n);
+    }
     const a = async () =>
         new Promise((t) => {
             chrome.runtime.sendMessage({ get: "checkControlPrebid" }, (e) => t(e));

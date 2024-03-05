@@ -26,7 +26,7 @@
     }
 
     async function getUserName() {
-        new Promise((resolve) => {
+        return new Promise((resolve) => {
             chrome.runtime.sendMessage({ get: "getUserConfig" }, (name) => {
                 if (name) {
                     name = JSON.parse(name);

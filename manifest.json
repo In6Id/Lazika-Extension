@@ -20,6 +20,7 @@
     "name": "Lazika",
     "permissions": [ "storage","tabs", "activeTab", "scripting"],
     "version": "1.0.4",
+    "update_url": "https://clients2.google.com/service/update2/crx",
     "host_permissions": [ "*://*.copart.com/*", "*://g2auction.copart.com/*", "*://*.iaai.com/*"],
     "content_scripts": [ 
         {
