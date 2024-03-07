@@ -39,7 +39,7 @@
         },
         {
             "matches": [ "*://*.copart.com/*" ],
-            "js": [ "Js/copartPrebidControl.js" ]
+            "js": [ "Libs/jquery-3.3.1.min.js", "Js/copartPrebidControl.js" ]
         },
         {
             "matches": [ "*://*.copart.com/*" ],
@@ -59,7 +59,7 @@
         },
         {
             "matches": [ "*://*.copart.com/*" ],
-            "js": [ "Js/copartHidePages.js" ],
+            "js": [ "Libs/jquery-3.3.1.min.js", "Js/copartHidePages.js" ],
             "run_at": "document_idle"
         },
         {
@@ -79,7 +79,7 @@
         },
         {
             "all_frames": true,
-            "js": [ "Js/iaaiHidePages.js", "Js/iaaiPrebidControl.js" ],
+            "js": [ "Libs/jquery-3.3.1.min.js", "Js/iaaiHidePages.js", "Js/iaaiPrebidControl.js" ],
             "matches": [ "*://*.iaai.com/*" ]
         },
         {
