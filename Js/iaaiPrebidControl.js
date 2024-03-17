@@ -198,6 +198,7 @@
             vin: await w()?.BranchLink || "",
             lotNumber: f(),
             bid: s,
+            url: window.location.href,
         };
         return new Promise((e) => {
             chrome.runtime.sendMessage({ get: "sendLogBid", logData: logData }, (t) => {
